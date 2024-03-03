@@ -15,3 +15,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "SmartMath"
 include ':app'
+include ':presentation'
+include ':data'
+include ':domain'

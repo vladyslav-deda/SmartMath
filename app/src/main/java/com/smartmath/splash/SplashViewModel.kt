@@ -3,13 +3,15 @@ package com.smartmath.splash
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.smartmath.splash.models.SplashContract
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class CustomSplashViewModel @Inject constructor() :ViewModel() {
+@HiltViewModel
+class SplashViewModel @Inject constructor() :ViewModel() {
 
     private val _authorizationState = Channel<SplashContract.Effect>()
     val authorizationState = _authorizationState.receiveAsFlow()

@@ -9,12 +9,15 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.smartmath.MainActivity
 import com.smartmath.databinding.ActivitySplashBinding
+import com.smartmath.login.LoginActivity
 import com.smartmath.splash.models.SplashContract
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
-class CustomSplashActivity : AppCompatActivity() {
+@AndroidEntryPoint
+class SplashActivity : AppCompatActivity() {
 
-    private val loginViewModel by viewModels<CustomSplashViewModel>()
+    private val loginViewModel by viewModels<SplashViewModel>()
     private lateinit var binding: ActivitySplashBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,7 +39,7 @@ class CustomSplashActivity : AppCompatActivity() {
     private fun handleAuthorizationState(state: SplashContract.Effect){
         val intent = when(state) {
             SplashContract.Effect.OpenLoginScreen -> {
-                Intent(this, MainActivity::class.java)
+                Intent(this, LoginActivity::class.java)
             }
             SplashContract.Effect.OpenMainScreen -> {
                 Intent(this, MainActivity::class.java)
